@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/fin_teck1/static/css/main.3beffaf7.css",
-    "main.js": "/fin_teck1/static/js/main.d4bf2451.js",
-    "index.html": "/fin_teck1/index.html",
-    "main.3beffaf7.css.map": "/fin_teck1/static/css/main.3beffaf7.css.map",
-    "main.d4bf2451.js.map": "/fin_teck1/static/js/main.d4bf2451.js.map"
+    "main.css": "/your-repo/static/css/main.dfaf4b81.css",
+    "main.js": "/your-repo/static/js/main.0d16116c.js",
+    "index.html": "/your-repo/index.html",
+    "main.dfaf4b81.css.map": "/your-repo/static/css/main.dfaf4b81.css.map",
+    "main.0d16116c.js.map": "/your-repo/static/js/main.0d16116c.js.map"
   },
   "entrypoints": [
-    "static/css/main.3beffaf7.css",
-    "static/js/main.d4bf2451.js"
+    "static/css/main.dfaf4b81.css",
+    "static/js/main.0d16116c.js"
   ]
 }
