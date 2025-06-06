@@ -2,6 +2,7 @@
   "name": "finteck",
   "private": true,
   "version": "0.0.0",
+  "homepage": "/",
   "dependencies": {
     "@faker-js/faker": "^9.8.0",
     "@headlessui/react": "^2.2.4",
@@ -50,7 +51,6 @@
       "last 1 safari version"
     ]
   },
-
   "type": "module",
   "devDependencies": {
     "gh-pages": "^6.3.0"
