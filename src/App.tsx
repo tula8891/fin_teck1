@@ -8,6 +8,7 @@ import { Goals } from './pages/Goals';
 import { Profile } from './pages/Profile';
 import { Navigation } from './components/Navigation';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import SpendingDashboard from './pages/SpendingDashboard';
 
 function App() {
   return (
@@ -30,6 +31,19 @@ function App() {
                 <Navigation />
                 <main className="pt-16 pb-20 md:pt-20">
                   <Dashboard />
+                </main>
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/spending"
+          element={
+            <ProtectedRoute>
+              <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+                <Navigation />
+                <main className="pt-16 pb-20 md:pt-20">
+                  <SpendingDashboard />
                 </main>
               </div>
             </ProtectedRoute>

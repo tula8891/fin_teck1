@@ -22,6 +22,7 @@ export const Navigation = () => {
 
   const navItems = [
     { name: 'Dashboard', icon: HomeIcon, path: '/dashboard' },
+    { name: 'Spending', icon: CurrencyDollarIcon, path: '/spending' },
     { name: 'Transactions', icon: CurrencyDollarIcon, path: '/transactions' },
     { name: 'Budgets', icon: ChartBarIcon, path: '/budgets' },
     { name: 'Goals', icon: FlagIcon, path: '/goals' },

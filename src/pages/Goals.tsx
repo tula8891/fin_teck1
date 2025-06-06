@@ -86,12 +86,11 @@ export const Goals = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="py-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            Goals
-          </h1>
+    <div className="relative min-h-screen bg-gray-50 pb-24">
+      {/* Gradient Header */}
+      <div className="bg-gradient-to-br from-pink-600 to-rose-500 rounded-b-3xl px-4 pt-8 pb-4 mb-4">
+        <div className="flex justify-between items-center mb-2">
+          <h1 className="text-2xl font-bold text-white">Goals</h1>
           <button
             onClick={() => setIsAdding(true)}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
@@ -104,57 +103,49 @@ export const Goals = () => {
 
       {/* Add/Edit Form */}
       {isAdding && (
-        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-4 mb-6">
+        <div className="bg-white rounded-2xl shadow p-4 mb-6 mx-4">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Name
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Name</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Target Amount
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Target Amount</label>
                 <input
                   type="number"
                   step="0.01"
                   required
                   value={formData.targetAmount}
                   onChange={(e) => setFormData({ ...formData, targetAmount: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Current Amount
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Current Amount</label>
                 <input
                   type="number"
                   step="0.01"
                   required
                   value={formData.currentAmount}
                   onChange={(e) => setFormData({ ...formData, currentAmount: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Deadline
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Deadline</label>
                 <input
                   type="date"
                   required
                   value={formData.deadline}
                   onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50"
                 />
               </div>
             </div>
@@ -165,7 +156,7 @@ export const Goals = () => {
                   setIsAdding(false);
                   setEditingId(null);
                 }}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-pink-600"
               >
                 Cancel
               </button>
@@ -181,65 +172,50 @@ export const Goals = () => {
       )}
 
       {/* Goals List */}
-      <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
-        {goals.map((goal) => {
-          const percentage = Math.min((goal.currentAmount / goal.targetAmount) * 100, 100);
-          const progressColor = getProgressColor(goal.currentAmount, goal.targetAmount);
-          const daysRemaining = getDaysRemaining(goal.deadline);
+      <div className="mx-4">
+        <ul role="list" className="divide-y divide-gray-100 bg-white rounded-2xl shadow">
+          {goals.map((goal) => {
+            const percentage = Math.min((goal.currentAmount / goal.targetAmount) * 100, 100);
+            const progressColor = getProgressColor(goal.currentAmount, goal.targetAmount);
+            const daysRemaining = getDaysRemaining(goal.deadline);
 
-          return (
-            <li key={goal.id} className="px-4 py-4 sm:px-6">
-              <div className="flex items-center justify-between">
+            return (
+              <li key={goal.id} className="px-4 py-4 flex items-center justify-between">
                 <div className="flex items-center">
-                  <FlagIcon className="h-6 w-6 text-gray-400" />
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
-                      {goal.name}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      ${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {daysRemaining > 0
-                        ? `${daysRemaining} days remaining`
-                        : 'Deadline passed'}
-                    </p>
+                  <FlagIcon className="h-6 w-6 text-pink-600 mr-3" />
+                  <div>
+                    <p className="text-base font-medium text-gray-900">{goal.name}</p>
+                    <p className="text-xs text-gray-500">${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}</p>
+                    <p className="text-xs text-gray-500">{daysRemaining > 0 ? `${daysRemaining} days remaining` : 'Deadline passed'}</p>
                   </div>
                 </div>
-                <div className="w-32">
-                  <div className="relative pt-1">
-                    <div className="flex mb-2 items-center justify-between">
-                      <div>
-                        <span className="text-xs font-semibold inline-block text-gray-600 dark:text-gray-400">
-                          {percentage.toFixed(0)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200 dark:bg-gray-700">
-                      <div
-                        style={{ width: `${percentage}%` }}
-                        className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${progressColor}`}
-                      />
-                    </div>
+                <div className="flex flex-col items-end">
+                  <div className="w-24 h-2 bg-gray-200 rounded-full mt-1">
+                    <div className={`h-2 rounded-full ${progressColor}`} style={{ width: `${percentage}%` }}></div>
                   </div>
                 </div>
-                <button
-                  onClick={() => handleEdit(goal)}
-                  className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
-                >
-                  <PencilIcon className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => handleDelete(goal.id)}
-                  className="text-gray-400 hover:text-red-500 dark:hover:text-red-400"
-                >
-                  <TrashIcon className="h-5 w-5" />
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                <div className="flex items-center ml-4 space-x-2">
+                  <button onClick={() => handleEdit(goal)} className="text-indigo-600 hover:text-indigo-800"><PencilIcon className="h-5 w-5" /></button>
+                  <button onClick={() => handleDelete(goal.id)} className="text-red-500 hover:text-red-700"><TrashIcon className="h-5 w-5" /></button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {/* Bottom Navigation Bar */}
+      <div className="fixed bottom-0 left-0 right-0 h-14 bg-white border-t border-gray-200 flex justify-around items-center z-20">
+        <span className="text-gray-400 text-sm">Dashboard</span>
+        <span className="text-gray-400 text-sm">Recurring</span>
+        <span className="text-pink-600 text-sm font-bold">Spending</span>
+        <span className="text-gray-400 text-sm">Transactions</span>
+        <span className="text-gray-400 text-sm">More</span>
+      </div>
+      {/* Demo Mode Banner */}
+      <div className="fixed bottom-14 left-0 right-0 bg-gray-700 text-white text-center py-2 z-30">
+        🎲 You are now in Demo Mode
+      </div>
     </div>
   );
 }; 
